@@ -38,6 +38,7 @@ using namespace std;
 #include "Ponto.h"
 #include "Poligono.h"
 #include "DiagramaVoronoi.h"
+#include "Envelope.h"
 
 #include "ListaDeCoresRGB.h"
 
@@ -51,6 +52,8 @@ Poligono Pontos;
 Voronoi Voro;
 int *CoresDosPoligonos;
 
+Envelope *envelopes;
+
 // Limites logicos da area de desenho
 Ponto Min, Max, PontoClicado;
 
@@ -60,6 +63,8 @@ bool FoiClicado = false;
 float angulo=0.0;
 
 Ponto ponto (5,5);
+
+Poligono *Diagrama;
 
 // **********************************************************************
 //
@@ -129,6 +134,17 @@ void init()
 
     for (int i=0; i<Voro.getNPoligonos(); i++) //carga e definição das cores dos polígonos
         CoresDosPoligonos[i] = i*2;//rand()%80;
+
+    envelopes = new Envelope[Voro.getNPoligonos()];
+
+    Diagrama = Voro.getDiagrama();
+
+    for (int i = 0; i < Voro.getNPoligonos(); i++){
+        Diagrama[i].obtemLimites2();
+        envelopes[i].GeraEnvelope(Diagrama[i].getMaximo(), Diagrama[i].getMinimo());
+        //envelopes[i].imprime();
+        //printf("\n");
+    }
 
     // Ajusta a largura da janela l—gica
     // em fun‹o do tamanho dos pol’gonos

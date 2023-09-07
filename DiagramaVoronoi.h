@@ -18,7 +18,7 @@ using namespace std;
 
 class Voronoi //pode passar o que está aqui para a classe .cpp
 {
-    Poligono Diagrama[1000];
+    Poligono *Diagrama;
     unsigned int qtdDePoligonos;
     Ponto Min, Max;
 public:
@@ -29,6 +29,7 @@ public:
     void obtemLimites(Ponto &min, Ponto &max);
     unsigned int getNPoligonos(); //quantos polígonos tem no diagrama
     void obtemVizinhosDasArestas();
+    Poligono* getDiagrama();
 };
 
 #endif /* DiagramaVoronoi_h */

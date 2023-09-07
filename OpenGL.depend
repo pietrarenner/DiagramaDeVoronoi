@@ -165,15 +165,15 @@
 1692904432 source:c:\users\10033421\desktop\voronoi\temporizador.cpp
 	"Temporizador.h"
 
-1694122331 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\diagramavoronoi.cpp
+1694127896 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\diagramavoronoi.cpp
 	"DiagramaVoronoi.h"
 
-1692913299 c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\diagramavoronoi.h
+1694127904 c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\diagramavoronoi.h
 	<iostream>
 	<fstream>
 	"Poligono.h"
 
-1692904434 c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\poligono.h
+1694127954 c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\poligono.h
 	<iostream>
 	<windows.h>
 	<glut.h>
@@ -234,7 +234,7 @@
 	<GLUT/glut.h>
 	<glut.h>
 
-1692904434 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\poligono.cpp
+1694127964 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\poligono.cpp
 	<iostream>
 	<fstream>
 	"Poligono.h"
@@ -245,7 +245,7 @@
 1692904434 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\temporizador.cpp
 	"Temporizador.h"
 
-1694120600 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\exibevariospoligonos.cpp
+1694126403 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\exibevariospoligonos.cpp
 	<iostream>
 	<cmath>
 	<ctime>
@@ -259,6 +259,18 @@
 	"Ponto.h"
 	"Poligono.h"
 	"DiagramaVoronoi.h"
+	"Envelope.h"
 	"ListaDeCoresRGB.h"
 	"Temporizador.h"
+
+1662299266 source:c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\envelope.cpp
+	"Envelope.h"
+
+1662584844 c:\users\pietr\onedrive\documentos\facul\quarto semestre\computa«√o gr¡fica\voronoi\envelope.h
+	<iostream>
+	<windows.h>
+	<glut.h>
+	<GLUT/glut.h>
+	<glut.h>
+	"Ponto.h"
 

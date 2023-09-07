@@ -49,7 +49,9 @@ public:
     void LePoligono(const char *nome);
     void desenhaAresta(int n);
     void getAresta(int i, Ponto &P1, Ponto &P2);
-
+    Ponto getMaximo();
+    Ponto getMinimo();
+    void obtemLimites2();
 };
 
 #endif

@@ -70,7 +70,19 @@ unsigned long Poligono::getNVertices()
     return Vertices.size();
 }
 
+//ponto mínimo e máximo do polígono
 void Poligono::obtemLimites(Ponto &Min, Ponto &Max)
+{
+    Max = Min = Vertices[0];
+
+    for (int i=0; i<Vertices.size(); i++)
+    {
+        Min = ObtemMinimo (Vertices[i], Min);
+        Max = ObtemMaximo (Vertices[i], Max);
+    }
+}
+
+void Poligono::obtemLimites2()
 {
     Max = Min = Vertices[0];
 
@@ -135,3 +147,12 @@ void Poligono::desenhaAresta(int n)
     glEnd();
 }
 
+Ponto Poligono::getMaximo()
+{
+    return Max;
+}
+
+Ponto Poligono::getMinimo()
+{
+    return Min;
+}

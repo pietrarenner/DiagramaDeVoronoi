@@ -49,6 +49,7 @@ void Voronoi::LePoligonos(const char *nome)
     input >> qtdDePoligonos;
     cout << "qtdDePoligonos:" << qtdDePoligonos << endl;
     Ponto A, B;
+    Diagrama = new Poligono[qtdDePoligonos];
     Diagrama[0] = LeUmPoligono();
     Diagrama[0].obtemLimites(Min, Max);// obtem o envelope do poligono
     for (int i=1; i< qtdDePoligonos; i++)
@@ -91,4 +92,9 @@ void Voronoi::obtemVizinhosDasArestas()
 
         }
     }
+}
+
+Poligono* Voronoi::getDiagrama()
+{
+    return Diagrama;
 }
