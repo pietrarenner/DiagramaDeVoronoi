@@ -274,3 +274,97 @@
 	<glut.h>
 	"Ponto.h"
 
+1694989154 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.cpp
+	"DiagramaVoronoi.h"
+
+1694982010 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.h
+	<iostream>
+	<fstream>
+	"Poligono.h"
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\poligono.h
+	<iostream>
+	<windows.h>
+	<glut.h>
+	<GLUT/glut.h>
+	<glut.h>
+	"Ponto.h"
+	<vector>
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\gl\glut.h
+	"freeglut.h"
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\gl\freeglut_ext.h
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\ponto.h
+	<iostream>
+	<cmath>
+
+1694986679 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\exibevariospoligonos.cpp
+	<iostream>
+	<cmath>
+	<ctime>
+	<fstream>
+	<stdlib.h>
+	<windows.h>
+	<glut.h>
+	<sys/time.h>
+	<GLUT/glut.h>
+	<glut.h>
+	"Ponto.h"
+	"Poligono.h"
+	"DiagramaVoronoi.h"
+	"Envelope.h"
+	"ListaDeCoresRGB.h"
+	"Temporizador.h"
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\envelope.h
+	<iostream>
+	<windows.h>
+	<glut.h>
+	<GLUT/glut.h>
+	<glut.h>
+	"Ponto.h"
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\listadecoresrgb.h
+	<iostream>
+	<cmath>
+	<ctime>
+	<fstream>
+	<windows.h>
+	<glut.h>
+	<sys/time.h>
+	<GLUT/glut.h>
+	<glut.h>
+
+1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\temporizador.h
+	<iostream>
+	<windows.h>
+	<sys/time.h>
+
+1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\listadecoresrgb.cpp
+	"ListaDeCoresRGB.h"
+
+1694983645 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\poligono.cpp
+	<iostream>
+	<fstream>
+	"Poligono.h"
+
+1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\ponto.cpp
+	"Ponto.h"
+
+1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\temporizador.cpp
+	"Temporizador.h"
+
+1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\envelope.cpp
+	"Envelope.h"
+

@@ -59,6 +59,7 @@ Ponto Min, Max, PontoClicado;
 
 bool desenha = false;
 bool FoiClicado = false;
+bool mudou = false;
 
 float angulo=0.0;
 
@@ -319,6 +320,28 @@ void display( void )
     glPointSize(5);
     DesenhaPonto();
 
+    if(mudou) {
+        //fazer for para pegar envelopes que tenham y máximo maior do que ponto.y
+        //e que tenham y mínimo menor do que ponto.y
+        for(int i = 0; i < Voro.getNPoligonos(); i++)
+        {
+            if((envelopes[i].Min.y < ponto.y) && (envelopes[i].Max.y > ponto.y))
+            {
+                //chamar função de inclusão de pontos em polígonos côncavos -> somente quando o ponto mudar de lugar
+                //enviar o polígono
+                printf("o ponto %d foi enviado para o calculo\n", i);
+                if(Voro.poligonosConcavos(ponto, Diagrama[i]) == true)
+                {
+                    printf("o ponto esta dentro do poligono %d\n", i);
+                }
+            }
+        }
+
+        printf("--------------------------------\n");
+
+        mudou = false;
+    }
+
     glutSwapBuffers();
 }
 // **********************************************************************
@@ -361,15 +384,19 @@ void keyboard ( unsigned char key, int x, int y )
             break;
         case 'a':
             ponto.x -= 0.1;
+            mudou = true;
             break;
         case 's':
             ponto.y -= 0.1;
+            mudou = true;
             break;
         case 'w':
             ponto.y += 0.1;
+            mudou = true;
             break;
         case 'd':
             ponto.x += 0.1;
+            mudou = true;
             break;
 		default:
 			break;
