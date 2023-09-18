@@ -156,3 +156,15 @@ Ponto Poligono::getMinimo()
 {
     return Min;
 }
+
+void Poligono::inicializaVizinhos(){
+    vizinhos = new int[Vertices.size()];
+}
+
+void Poligono::insereVizinho(int pos, int poligono) {
+    vizinhos[pos] = poligono;
+}
+
+int Poligono::getVizinho(int i) {
+    return vizinhos[i];
+}

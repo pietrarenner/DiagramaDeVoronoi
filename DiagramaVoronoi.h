@@ -31,6 +31,7 @@ public:
     void obtemVizinhosDasArestas();
     Poligono* getDiagrama();
     bool poligonosConcavos(Ponto p, Poligono pol);
+    bool poligonosConvexos();
 };
 
 #endif /* DiagramaVoronoi_h */

@@ -87,9 +87,42 @@ void Voronoi::obtemLimites(Ponto &min, Ponto &max)
 
 void Voronoi::obtemVizinhosDasArestas()
 {
-    for(int i = 0; i < getNPoligonos(); i++) {
-        for(int j = 0; j < Diagrama[i].getNVertices(); j++){
+    Ponto p, p1, p2, p3;
 
+    // Inicializar arrays de vizinhos
+    for (int i = 0; i < getNPoligonos(); i++)
+        Diagrama[i].inicializaVizinhos(); // Inicializa o vetor de vizinhos com a quantidade de vértices
+
+    // Criar dentro do polígono lista com os vizinhos
+    // Considerar nessa lista o vértice no qual a aresta começa
+    // Procurar por arestas que tenham o vértice atual e o anterior iguais ao atual e o próximo do polígono
+    for (int i = 0; i < getNPoligonos(); i++) {
+        for (int j = 0; j < Diagrama[i].getNVertices(); j++) { // Pega todos os vértices de um determinado polígono
+            // Pegar vértice[j] e vértice[(j + 1) % getNVertices()]
+            p = Diagrama[i].getVertice(j);
+            p1 = Diagrama[i].getVertice((j + 1) % Diagrama[i].getNVertices());
+
+            // Passar por todos os vértices do próximo polígono a ser comparado com o vértice atual do polígono atual
+            for (int k = 0; k < getNPoligonos(); k++) {
+                if (k == i) // Não comparar o polígono com ele mesmo
+                    continue;
+
+                for (int l = 0; l < Diagrama[k].getNVertices(); l++) {
+                    // Pegar vértice[l] e vértice[(l + 1) % getNVertices()]
+                    p2 = Diagrama[k].getVertice(l);
+                    p3 = Diagrama[k].getVertice((l + 1) % Diagrama[k].getNVertices());
+
+                    // Comparar vértice[j] do polígono atual com vértice[(l + 1) % getNVertices()] do próximo polígono
+                    // Comparar vértice[(j + 1) % getNVertices()] do polígono atual com vértice[l] do próximo polígono
+                    if ((p == p3) && (p1 == p2)) {
+                        Diagrama[i].insereVizinho(j, k);
+                        //Diagrama[k].insereVizinho(l, i);
+                        printf("Vizinho do poligono %d: %d\n", i, k);
+                        //printf("vizinho do poligono %d: %d\n", k, i);
+                        break;
+                    }
+                }
+            }
         }
     }
 }
@@ -102,7 +135,8 @@ Poligono* Voronoi::getDiagrama()
 //ta errado, mudar!!!
 //teste feito somente com pontos que cruzarem a linha horizontal usada para teste
 //contar número de intersecções: par = fora; ímpar = dentro
-bool Voronoi::poligonosConcavos(Ponto p, Poligono pol) { //p = ponto que definimos em ExibeVARIOSPoligonos
+//p = ponto que definimos em ExibeVARIOSPoligonos
+bool Voronoi::poligonosConcavos(Ponto p, Poligono pol) { //HaInterseccao
     int nVertices = pol.getNVertices();
     int contadorArestas = 0;
 
@@ -132,5 +166,8 @@ bool Voronoi::poligonosConcavos(Ponto p, Poligono pol) { //p = ponto que definim
 
     if(contadorArestas%2 == 0) return false; //não tá dentro -> é par
     else return true; //tá dentro -> é ímpar
+}
+
+bool Voronoi::poligonosConvexos(){  //ProdVetorial
 }
 

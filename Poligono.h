@@ -34,6 +34,7 @@ class Poligono
     vector <Ponto> Vertices;
     Ponto Min, Max;
     //Poligono Vizinhos[1000];
+    int *vizinhos;
 public:
     Poligono();
     Ponto getVertice(int);
@@ -52,6 +53,9 @@ public:
     Ponto getMaximo();
     Ponto getMinimo();
     void obtemLimites2();
+    void insereVizinho(int pos, int poligono);
+    void inicializaVizinhos();
+    int getVizinho(int i);
 };
 
 #endif

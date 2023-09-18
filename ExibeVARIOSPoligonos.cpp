@@ -127,7 +127,7 @@ void init()
 
     Voro.LePoligonos("ListaDePoligonos-V2.txt");
     Voro.obtemLimites(Min,Max);
-    //Voro.obtemVizinhosDasArestas();
+    Voro.obtemVizinhosDasArestas();
     Min.imprime("Minimo:", "\n");
     Max.imprime("Maximo:", "\n");
 
