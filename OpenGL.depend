@@ -274,10 +274,10 @@
 	<glut.h>
 	"Ponto.h"
 
-1695067461 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.cpp
+1695158663 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.cpp
 	"DiagramaVoronoi.h"
 
-1695067481 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.h
+1695158661 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.h
 	<iostream>
 	<fstream>
 	"Poligono.h"
@@ -309,7 +309,7 @@
 	<iostream>
 	<cmath>
 
-1695067485 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\exibevariospoligonos.cpp
+1695158832 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\exibevariospoligonos.cpp
 	<iostream>
 	<cmath>
 	<ctime>
@@ -359,7 +359,7 @@
 	<fstream>
 	"Poligono.h"
 
-1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\ponto.cpp
+1695152613 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\ponto.cpp
 	"Ponto.h"
 
 1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\temporizador.cpp

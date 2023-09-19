@@ -164,13 +164,14 @@ double ProdEscalar(Ponto v1, Ponto v2)
 // **********************************************************************
 //    Calcula o produto vetorial entre os vetores V1 e V2
 // **********************************************************************
+long int ContadorInt=0;
 void ProdVetorial (Ponto v1, Ponto v2, Ponto &vresult)
 {
     vresult.x = v1.y * v2.z - (v1.z * v2.y);
     vresult.y = v1.z * v2.x - (v1.x * v2.z);
     vresult.z = v1.x * v2.y - (v1.y * v2.x);
+    ContadorInt++;
 }
-long int ContadorInt=0;
 /* ********************************************************************** */
 /*                                                                        */
 /*  Calcula a interseccao entre 2 retas (no plano "XY" Z = 0)             */

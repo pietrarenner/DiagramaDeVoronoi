@@ -66,6 +66,9 @@ void Voronoi::LePoligonos(const char *nome)
     input.close();
 }
 
+//retorna cópia do polígono
+//adicionar & antes de Poligono
+//Poligono& poligono = getPoligono(indice)
 Poligono Voronoi::getPoligono(int i)
 {
     if (i >= qtdDePoligonos)
@@ -75,6 +78,7 @@ Poligono Voronoi::getPoligono(int i)
     }
     return Diagrama[i];
 }
+
 unsigned int Voronoi::getNPoligonos()
 {
     return qtdDePoligonos;
@@ -116,14 +120,14 @@ void Voronoi::obtemVizinhosDasArestas()
                     // Comparar vértice[(j + 1) % getNVertices()] do polígono atual com vértice[l] do próximo polígono
                     if ((p == p3) && (p1 == p2)) {
                         Diagrama[i].insereVizinho(j, k);
-                        //Diagrama[k].insereVizinho(l, i);
-                        printf("Vizinho do poligono %d: %d\n", i, k);
-                        //printf("vizinho do poligono %d: %d\n", k, i);
+                        //printf("Vizinho do poligono %d: %d\n", i, k);
+                        //printf("entrou na aresta %d\n", j);
                         break;
                     }
                 }
             }
         }
+        printf("\n");
     }
 }
 
@@ -136,14 +140,17 @@ Poligono* Voronoi::getDiagrama()
 //teste feito somente com pontos que cruzarem a linha horizontal usada para teste
 //contar número de intersecções: par = fora; ímpar = dentro
 //p = ponto que definimos em ExibeVARIOSPoligonos
-bool Voronoi::poligonosConcavos(Ponto p, Poligono pol) { //HaInterseccao
+//usar HaInterseccao aqui dentro?
+bool Voronoi::poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol) {
     int nVertices = pol.getNVertices();
     int contadorArestas = 0;
+    Ponto p1, p2;
 
     //considerar vértices que estão um ao lado do outro (formam arestas)
     //considerar vértices com x < ponto.x -> depende
     //se os vértices consecutivos tiverem o x < ponto.x, devem ser considerados
     //pensar em caso para último com o primeiro
+
 
     for(int i = 0; i < nVertices; i++)
     {
@@ -152,22 +159,66 @@ bool Voronoi::poligonosConcavos(Ponto p, Poligono pol) { //HaInterseccao
         float x2 = pol.getVertice((i + 1) % nVertices).x; //pega sempre o próximo vértice
         float y2 = pol.getVertice((i + 1) % nVertices).y; //quando i for o vértice final, pega o primeiro vértice
 
-        if(((x1 < p.x) || (x2 < p.x)) && ((y1 < p.y && y2 >= p.y) || (y2 < p.y && y1 >= p.y)))
+        p1 = Ponto(x1,y1);
+        p2 = Ponto(x2,y2);
+
+        if(HaInterseccao(ponto, Esq, p1, p2))
+        {
+            contadorArestas++;
+        }
+
+        //if(((x1 < p.x) || (x2 < p.x)) && ((y1 < p.y && y2 >= p.y) || (y2 < p.y && y1 >= p.y))) //HaInterseccao
             //saber se ponto está do lado direito das arestas calculando x
             //saber se as arestas estão no mesmo eixo y do ponto
             //triângulo e polígono do lado tem o mesmo número nesse cálculo
             //o que está faltando?
-        {
-            contadorArestas++;
-        }
+        //{
+        //}
     }
 
     printf("arestas: %d\n", contadorArestas);
 
     if(contadorArestas%2 == 0) return false; //não tá dentro -> é par
     else return true; //tá dentro -> é ímpar
+
 }
 
-bool Voronoi::poligonosConvexos(){  //ProdVetorial
+
+//função ProdVetorial dos pontos
+//usar função ProdVetorial aqui dentro? USEI
+bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
+    int contadorArestas = 0;
+    float x1, x2, x3, x4, y1, y2, y3, y4;
+    Ponto V1, V2, prodVetorialVP;
+    int n = pol.getNVertices();
+
+    for(int i = 0; i < n; i++)
+    {
+
+        x1 = pol.getVertice(i).x;
+        y1 = pol.getVertice(i).y; //pega o vértice atual
+        x2 = pol.getVertice((i + 1) % n).x; //pega sempre o próximo vértice
+        y2 = pol.getVertice((i + 1) % n).y;
+        //Ponto P1 = Ponto(x1,y1);
+        //Ponto P2 = Ponto (x2,y2);
+
+        //calculando os vetores
+        x3 = x2 - x1;
+        y3 = y2 - y1;
+        //V1 = P2-P1;
+        V1 = Ponto(x3,y3); //primeiro vetor
+
+        x4 = p.x - x1;
+        y4 = p.y - y1;
+        V2 = Ponto(x4,y4); //segundo vetor
+
+        //a função ProdVetorial pede dois pontos, mas o certo seriam dois vetores?
+        ProdVetorial(V1,V2,prodVetorialVP); //como chamar a função ProdVetorial???
+
+        if(prodVetorialVP.z > 0) contadorArestas++; //considera todos os pontos que estiverem de um mesmo lado
+    }
+
+    if(contadorArestas==0 || contadorArestas==n) return true;
+    else return false;
 }
 

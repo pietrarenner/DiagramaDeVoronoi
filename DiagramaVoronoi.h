@@ -30,8 +30,8 @@ public:
     unsigned int getNPoligonos(); //quantos polígonos tem no diagrama
     void obtemVizinhosDasArestas();
     Poligono* getDiagrama();
-    bool poligonosConcavos(Ponto p, Poligono pol);
-    bool poligonosConvexos();
+    bool poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol);
+    bool poligonosConvexos(Poligono pol, Ponto p);
 };
 
 #endif /* DiagramaVoronoi_h */
