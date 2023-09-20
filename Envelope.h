@@ -33,16 +33,16 @@ class Envelope
     Ponto Meio, MeiaLargura;
 public:
     Ponto Min,Max; // envelope
-    
+
     Envelope();
     Envelope(Ponto P1, Ponto P2);
     bool temColisao(Envelope E);
-    void GeraEnvelope(Ponto P1, Ponto P2); // 
+    void GeraEnvelope(Ponto P1, Ponto P2); //
     void AtualizaEnvelope();
     bool pontoEstaDentro(Ponto P);
     void imprime();
     void Desenha();
-    
+    bool envelopeCruzaLinhaHorizontal(Ponto p);
 };
 
 #endif /* Envelope_hpp */

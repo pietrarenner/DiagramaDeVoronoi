@@ -11,7 +11,7 @@
 
 Envelope::Envelope()
 {
-    
+
 }
 Envelope::Envelope(Ponto P1, Ponto P2)
 {
@@ -38,6 +38,13 @@ bool Envelope::temColisao(Envelope E)
         return false;
     return true;
 }
+
+bool Envelope::envelopeCruzaLinhaHorizontal(Ponto p)
+{
+    if((Min.y < p.y) && (Max.y > p.y)) return true;
+
+    return false;
+}
 void Envelope::GeraEnvelope(Ponto P1, Ponto P2)
 {
     Min = ObtemMinimo(P1, P2);
@@ -45,7 +52,7 @@ void Envelope::GeraEnvelope(Ponto P1, Ponto P2)
 
     Meio = (Max+Min) * 0.5;
     MeiaLargura = (Max-Min) * 0.5;
-    
+
     // Min.imprime("Minimo: ", "\n");
     // Max.imprime("Maximo: ", "\n");
     // Meio.imprime("Meio: ", "\n");
@@ -63,7 +70,7 @@ bool Envelope::pontoEstaDentro(Ponto P)
     if (P.x > Max.x) return false;
     if (P.y < Min.y) return false;
     if (P.y > Max.y) return false;
-    
+
     return true;
 }
 void Envelope::imprime()

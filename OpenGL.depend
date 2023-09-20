@@ -309,7 +309,7 @@
 	<iostream>
 	<cmath>
 
-1695218829 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\exibevariospoligonos.cpp
+1695219996 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\exibevariospoligonos.cpp
 	<iostream>
 	<cmath>
 	<ctime>
@@ -327,7 +327,7 @@
 	"ListaDeCoresRGB.h"
 	"Temporizador.h"
 
-1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\envelope.h
+1695219672 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\envelope.h
 	<iostream>
 	<windows.h>
 	<glut.h>
@@ -365,6 +365,6 @@
 1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\temporizador.cpp
 	"Temporizador.h"
 
-1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\envelope.cpp
+1695219723 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\envelope.cpp
 	"Envelope.h"
 

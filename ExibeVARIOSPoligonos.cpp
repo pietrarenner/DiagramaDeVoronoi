@@ -288,12 +288,12 @@ void poligonosConcavos()
     glColor3f(0,1,0); // R, G, B  [0..1]
     DesenhaLinha(ponto, Esq);
 
+    //printf("contador: %d\n", getContadorInt());
 
     for(int i = 0; i < Voro.getNPoligonos(); i++)
     {
-        if((envelopes[i].Min.y < ponto.y) && (envelopes[i].Max.y > ponto.y))
+        if(envelopes[i].envelopeCruzaLinhaHorizontal(ponto))
         {
-            //chamar função de inclusão de pontos em polígonos côncavos -> somente quando o ponto mudar de lugar
             //printf("o ponto %d foi enviado para o calculo\n", i);
             if(Voro.poligonosConcavos(ponto, Esq, Diagrama[i]) == true) //devemos enviar o próprio polígono ou seu envelope?
             {
@@ -310,6 +310,8 @@ void poligonosConcavos()
 }
 
 void poligonosConvexos(){
+    //printf("contador: %d\n", getContadorInt());
+
     for(int i = 0; i < Voro.getNPoligonos(); i++)
     {
         if(envelopes[i].pontoEstaDentro(ponto))
