@@ -123,6 +123,7 @@ enum {
 };
 
 
+//String defineCor(int c);
 void defineCor(int c);
 
 #endif

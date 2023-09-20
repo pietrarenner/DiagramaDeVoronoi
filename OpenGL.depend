@@ -274,7 +274,7 @@
 	<glut.h>
 	"Ponto.h"
 
-1695158663 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.cpp
+1695159088 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.cpp
 	"DiagramaVoronoi.h"
 
 1695158661 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\diagramavoronoi.h
@@ -282,7 +282,7 @@
 	<fstream>
 	"Poligono.h"
 
-1695065456 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\poligono.h
+1695215119 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\poligono.h
 	<iostream>
 	<windows.h>
 	<glut.h>
@@ -309,7 +309,7 @@
 	<iostream>
 	<cmath>
 
-1695158832 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\exibevariospoligonos.cpp
+1695216448 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\exibevariospoligonos.cpp
 	<iostream>
 	<cmath>
 	<ctime>
@@ -335,7 +335,7 @@
 	<glut.h>
 	"Ponto.h"
 
-1694728188 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\listadecoresrgb.h
+1695212581 c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\listadecoresrgb.h
 	<iostream>
 	<cmath>
 	<ctime>
@@ -351,10 +351,10 @@
 	<windows.h>
 	<sys/time.h>
 
-1694728188 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\listadecoresrgb.cpp
+1695212581 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\listadecoresrgb.cpp
 	"ListaDeCoresRGB.h"
 
-1695065458 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\poligono.cpp
+1695215133 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\poligono.cpp
 	<iostream>
 	<fstream>
 	"Poligono.h"

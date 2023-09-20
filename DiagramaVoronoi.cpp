@@ -136,21 +136,12 @@ Poligono* Voronoi::getDiagrama()
     return Diagrama;
 }
 
-//ta errado, mudar!!!
 //teste feito somente com pontos que cruzarem a linha horizontal usada para teste
 //contar número de intersecções: par = fora; ímpar = dentro
-//p = ponto que definimos em ExibeVARIOSPoligonos
-//usar HaInterseccao aqui dentro?
 bool Voronoi::poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol) {
     int nVertices = pol.getNVertices();
     int contadorArestas = 0;
     Ponto p1, p2;
-
-    //considerar vértices que estão um ao lado do outro (formam arestas)
-    //considerar vértices com x < ponto.x -> depende
-    //se os vértices consecutivos tiverem o x < ponto.x, devem ser considerados
-    //pensar em caso para último com o primeiro
-
 
     for(int i = 0; i < nVertices; i++)
     {
@@ -166,14 +157,6 @@ bool Voronoi::poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol) {
         {
             contadorArestas++;
         }
-
-        //if(((x1 < p.x) || (x2 < p.x)) && ((y1 < p.y && y2 >= p.y) || (y2 < p.y && y1 >= p.y))) //HaInterseccao
-            //saber se ponto está do lado direito das arestas calculando x
-            //saber se as arestas estão no mesmo eixo y do ponto
-            //triângulo e polígono do lado tem o mesmo número nesse cálculo
-            //o que está faltando?
-        //{
-        //}
     }
 
     printf("arestas: %d\n", contadorArestas);
@@ -183,9 +166,6 @@ bool Voronoi::poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol) {
 
 }
 
-
-//função ProdVetorial dos pontos
-//usar função ProdVetorial aqui dentro? USEI
 bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
     int contadorArestas = 0;
     float x1, x2, x3, x4, y1, y2, y3, y4;
@@ -212,7 +192,6 @@ bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
         y4 = p.y - y1;
         V2 = Ponto(x4,y4); //segundo vetor
 
-        //a função ProdVetorial pede dois pontos, mas o certo seriam dois vetores?
         ProdVetorial(V1,V2,prodVetorialVP); //como chamar a função ProdVetorial???
 
         if(prodVetorialVP.z > 0) contadorArestas++; //considera todos os pontos que estiverem de um mesmo lado

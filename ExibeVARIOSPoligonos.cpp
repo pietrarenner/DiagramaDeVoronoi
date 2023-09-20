@@ -63,13 +63,17 @@ bool mudou = false;
 
 float angulo=0.0;
 
-Ponto ponto (5,5);
+Ponto ponto (0,0);
 
 Poligono *Diagrama;
+Poligono pol;
+int numVizinho;
 
 int contConcavos = 0;
 int contConvexos = 0;
 int contConvexosVizinhos = 0;
+
+int poligonoAtual;
 
 Ponto Esq;
 Ponto Dir (-1,0);
@@ -150,9 +154,19 @@ void init()
     for (int i = 0; i < Voro.getNPoligonos(); i++){
         Diagrama[i].obtemLimites2();
         envelopes[i].GeraEnvelope(Diagrama[i].getMaximo(), Diagrama[i].getMinimo());
-        //envelopes[i].imprime();
-        //printf("\n");
+
+        if(Voro.poligonosConvexos(Diagrama[i],ponto))
+        {
+            poligonoAtual = i;
+            printf("poligono atual: %d\n", i);
+            resetContadorInt();
+        }
     }
+
+    resetContadorInt();
+        //Diagrama[i].mudaCorPoligono(CoresDosPoligonos[i]);
+
+
 
     // Ajusta a largura da janela l—gica
     // em fun‹o do tamanho dos pol’gonos
@@ -292,6 +306,7 @@ void display( void )
     //implementar função que constrói os vizinhos?
     for (int i=0; i<Voro.getNPoligonos(); i++) //algoritmo que desenha os polígonos -> passando por todos os polígonos
     {
+        //P.mudaCorPoligono(defineCor(CoresDosPoligonos[i]));
         defineCor(CoresDosPoligonos[i]);
         P = Voro.getPoligono(i);
         P.pintaPoligono(); //pinta o polígono dentro
@@ -328,65 +343,94 @@ void display( void )
     DesenhaPonto();
 
     if(mudou) {
-        //fazer for para pegar envelopes que tenham y máximo maior do que ponto.y
-        //e que tenham y mínimo menor do que ponto.y
-
-        Esq = ponto + Dir * (10000);
-        glColor3f(0,1,0); // R, G, B  [0..1]
-        DesenhaLinha(ponto, Esq);
-
-        for(int i = 0; i < Voro.getNPoligonos(); i++)
+        if(!Voro.poligonosConvexos(Diagrama[poligonoAtual],ponto))
         {
-            if((envelopes[i].Min.y < ponto.y) && (envelopes[i].Max.y > ponto.y))
+            resetContadorInt();
+            Esq = ponto + Dir * (10000);
+            glColor3f(0,1,0); // R, G, B  [0..1]
+            DesenhaLinha(ponto, Esq);
+
+
+            for(int i = 0; i < Voro.getNPoligonos(); i++)
             {
-                //chamar função de inclusão de pontos em polígonos côncavos -> somente quando o ponto mudar de lugar
-                //enviar o polígono
-                //printf("o ponto %d foi enviado para o calculo\n", i);
-                if(Voro.poligonosConcavos(ponto, Esq, Diagrama[i]) == true) //devemos enviar o próprio polígono ou seu envelope?
+                if((envelopes[i].Min.y < ponto.y) && (envelopes[i].Max.y > ponto.y))
                 {
-                    printf("o ponto esta dentro do poligono %d\n", i);
+                    //chamar função de inclusão de pontos em polígonos côncavos -> somente quando o ponto mudar de lugar
+                    //printf("o ponto %d foi enviado para o calculo\n", i);
+                    if(Voro.poligonosConcavos(ponto, Esq, Diagrama[i]) == true) //devemos enviar o próprio polígono ou seu envelope?
+                    {
+                        printf("o ponto esta dentro do poligono %d\n", i);
+                        //poligonoAtual = i;
+                    }
                 }
             }
-        }
 
-        printf("POLIGONOS CONCAVOS: a funcao ProdVetorial foi chamada %d vezes", getContadorInt());
-        resetContadorInt();
+            printf("POLIGONOS CONCAVOS: a funcao ProdVetorial foi chamada %d vezes", getContadorInt());
+            resetContadorInt();
 
-        printf("--------------------------------\n");
+            printf("--------------------------------\n");
 
-    /*
-        for(int i = 0; i < Voro.getNPoligonos(); i++)
-        {
-            if(envelopes[i].pontoEstaDentro(ponto))
+
+            for(int i = 0; i < Voro.getNPoligonos(); i++)
             {
-                contConvexos++;
-
-                //printf("o ponto %d foi enviado para o calculo\n", i);
-                if(Voro.poligonosConvexos(Diagrama[i], ponto) == true)
+                if(envelopes[i].pontoEstaDentro(ponto))
                 {
-                    printf("o ponto esta dentro do poligono %d\n", i);
+                    contConvexos++;
+
+                    //printf("o ponto %d foi enviado para o calculo\n", i);
+                    if(Voro.poligonosConvexos(Diagrama[i], ponto) == true)
+                    {
+                        printf("o ponto esta dentro do poligono %d\n", i);
+                    }
                 }
             }
+
+            printf("POLIGONOS CONVEXOS: a funcao ProdVetorial foi chamada %d vezes", getContadorInt());
+            resetContadorInt();
+
+            printf("---------------------------------\n");
+
+            //chamar último algoritmo
+            //sabe em que polígono está
+            //testa somente com vizinhos do polígono
+            //guardar qual é o polígono atual?
+
+        //for() -> percorre vizinhos do polígono atual
+            //pegar vizinhos do polígono atual
+            //mandar só vizinhos para poligonosConvexos
+            //saber qual aresta foi cruzada
+
+            for(int j = 0; j < Diagrama[poligonoAtual].getNVertices(); j++) { //vizinhos e vértices tem mesmo tamanho
+                numVizinho = Diagrama[poligonoAtual].getVizinho(j);
+                pol = Diagrama[numVizinho];
+
+                if(Voro.poligonosConvexos(pol, ponto))
+                {
+                    //POR QUE SÓ FUNCIONA COM ESSE PRINT????
+                    std::cout << "O valor booleano eh: " << (Voro.poligonosConvexos(pol, ponto) ? "true" : "false") << std::endl;
+                    printf("o ponto esta dentro do poligono %d\n", numVizinho);
+                    poligonoAtual = numVizinho;
+                    break;
+                }
+
+                printf("poligono: %d\nnumvizinho: %d\n", pol, numVizinho);
+            }
+
+
+            printf("VIZINHOS: a funcao ProdVetorial foi chamada %d vezes\n", getContadorInt());
+            resetContadorInt();
+
+            printf("---------------------------------\n");
+
         }
-
-        printf("POLIGONOS CONVEXOS: a funcao ProdVetorial foi chamada %d vezes", getContadorInt());
-        resetContadorInt();
-
-        printf("---------------------------------\n");
-        */
-
-        //chamar último algoritmo
-        //sabe em que polígono está
-        //testa somente com vizinhos do polígono
-        //guardar qual é o polígono atual?
-        for(int i = 0; i < Voro.getNPoligonos(); i++)
+        else
         {
-
+            printf("o poligono ainda eh o %d\n", poligonoAtual);
+            printf("a funcao ProdVetorial foi chamada %d vezes\n", getContadorInt());
+            resetContadorInt();
         }
 
-        printf("VIZINHOS: a funcao ProdVetorial foi chamada %d vezes", getContadorInt());
-        resetContadorInt();
-
+        printf("poligono atual: %d\n", poligonoAtual);
         mudou = false;
     }
 

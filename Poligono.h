@@ -35,6 +35,7 @@ class Poligono
     Ponto Min, Max;
     //Poligono Vizinhos[1000];
     int *vizinhos;
+    //String corDoPoligono;
 public:
     Poligono();
     Ponto getVertice(int);
@@ -56,6 +57,8 @@ public:
     void insereVizinho(int pos, int poligono);
     void inicializaVizinhos();
     int getVizinho(int i);
+    //void mudaCorPoligono(int cor);
+    //String getCor();
 };
 
 #endif

@@ -46,6 +46,19 @@ void Poligono::pintaPoligono()
     glEnd();
 }
 
+/*
+void Poligono::mudaCorPoligono(int cor)
+{
+    corDoPoligono = cor;
+}
+
+String Poligono::getCor()
+{
+    return corDoPoligono;
+}
+*/
+
+
 void Poligono::desenhaPoligono()
 {
     glBegin(GL_LINE_LOOP);
