@@ -127,7 +127,7 @@ void Voronoi::obtemVizinhosDasArestas()
                 }
             }
         }
-        printf("\n");
+        //printf("\n");
     }
 }
 
@@ -136,8 +136,6 @@ Poligono* Voronoi::getDiagrama()
     return Diagrama;
 }
 
-//teste feito somente com pontos que cruzarem a linha horizontal usada para teste
-//contar número de intersecções: par = fora; ímpar = dentro
 bool Voronoi::poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol) {
     int nVertices = pol.getNVertices();
     int contadorArestas = 0;
@@ -163,7 +161,6 @@ bool Voronoi::poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol) {
 
     if(contadorArestas%2 == 0) return false; //não tá dentro -> é par
     else return true; //tá dentro -> é ímpar
-
 }
 
 bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
@@ -195,9 +192,10 @@ bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
         ProdVetorial(V1,V2,prodVetorialVP); //como chamar a função ProdVetorial???
 
         if(prodVetorialVP.z > 0) contadorArestas++; //considera todos os pontos que estiverem de um mesmo lado
+        else if(prodVetorialVP.z < 0) return false;
     }
 
-    if(contadorArestas==0 || contadorArestas==n) return true;
-    else return false;
+    if(contadorArestas==n) return true;
+    return false;
 }
 

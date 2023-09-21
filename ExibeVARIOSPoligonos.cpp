@@ -17,6 +17,9 @@
 #include <ctime>
 #include <fstream>
 #include <stdlib.h>
+#include <sstream>
+#include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -97,6 +100,14 @@ void printString(string s, int posX, int posY)
 // **********************************************************************
 //
 // **********************************************************************
+
+// Função para converter um inteiro em uma string
+std::string intToString(int numero) {
+    std::ostringstream stream;
+    stream << numero;
+    return stream.str();
+}
+
 void ImprimeNumeracaoDosVertices(Poligono &P)
 {
     for(int i=0;i<P.getNVertices();i++)
@@ -154,8 +165,11 @@ void init()
     Diagrama = Voro.getDiagrama();
 
     for (int i = 0; i < Voro.getNPoligonos(); i++){
+        Poligono p = Voro.getPoligono(i);
         Diagrama[i].obtemLimites2();
         envelopes[i].GeraEnvelope(Diagrama[i].getMaximo(), Diagrama[i].getMinimo());
+
+        Diagrama[i].imprime();
 
         if(Voro.poligonosConvexos(Diagrama[i],ponto))
         {
@@ -367,6 +381,7 @@ void display( void )
     {
         P = Voro.getPoligono(i);
         P.desenhaPoligono(); //desenhando bordas dos polígonos
+        printString(intToString(i), envelopes[i].getMeio().x, envelopes[i].getMeio().y);
     }
 
     if (desenha)
@@ -409,27 +424,13 @@ void display( void )
             //mandar só vizinhos para poligonosConvexos
             //saber qual aresta foi cruzada
 
-            //Ponto result, prodVetorial, P1, P2, vetorPoligono, vetorPontoAtual, vetorPontoAnterior;
+            /*
+            //salvar aresta que foi cruzada (deu negativo)
+            //pegar polígono que tem aquela aresta também
+            //testar com algoritmo dos convexos
             for(int j = 0; j < Diagrama[poligonoAtual].getNVertices(); j++) { //vizinhos e vértices tem mesmo tamanho
                 numVizinho = Diagrama[poligonoAtual].getVizinho(j);
                 pol = Diagrama[numVizinho];
-
-               /* Diagrama[poligonoAtual].getAresta(j, P1, P2);
-
-                vetorPoligono = P2 - P1;
-                vetorPontoAtual = ponto - P1;
-                vetorPontoAnterior = pontoAnterior - P1;
-
-
-                prodVetorial = ProdVetorial()
-
-                if()
-                    */
-
-                //ter ponto anterior
-                //ter ponto atual
-                //if(ProdVetorial(pontoAnterior,aresta) < 0 && ProdVetorial(pontoAtual,aresta) > 0) cruzou linha
-                //else if(ProdVetorial(pontoAterior,aresta) > 0 && ProdVetorial(pontoAtual,aresta) < 0) cruzou linha
 
                 if(Voro.poligonosConvexos(pol, ponto))
                 {
@@ -442,6 +443,7 @@ void display( void )
 
                 printf("poligono: %d\nnumvizinho: %d\n", pol, numVizinho);
             }
+            */
 
 
             printf("VIZINHOS: a funcao ProdVetorial foi chamada %d vezes\n", getContadorInt());

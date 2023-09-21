@@ -33,7 +33,7 @@ class Envelope
     Ponto Meio, MeiaLargura;
 public:
     Ponto Min,Max; // envelope
-
+    Ponto getMeio();
     Envelope();
     Envelope(Ponto P1, Ponto P2);
     bool temColisao(Envelope E);

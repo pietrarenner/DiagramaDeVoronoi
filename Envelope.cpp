@@ -88,3 +88,7 @@ void Envelope::Desenha()
     glEnd();
 }
 
+Ponto Envelope::getMeio(){
+    return Meio;
+}
+
