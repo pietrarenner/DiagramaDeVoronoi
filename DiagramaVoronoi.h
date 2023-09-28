@@ -14,6 +14,7 @@
 using namespace std;
 
 #include "Poligono.h"
+#include "Envelope.h"
 
 
 class Voronoi //pode passar o que está aqui para a classe .cpp
@@ -21,6 +22,7 @@ class Voronoi //pode passar o que está aqui para a classe .cpp
     Poligono *Diagrama;
     unsigned int qtdDePoligonos;
     Ponto Min, Max;
+    Envelope *envelopes;
 public:
     Voronoi();
     Poligono LeUmPoligono();
@@ -32,6 +34,9 @@ public:
     Poligono* getDiagrama();
     bool poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol);
     bool poligonosConvexos(Poligono pol, Ponto p);
+    Envelope getEnvelope(int i);
+    void criaEnvelopes();
+    void setEnvelopes(int i, Ponto p1, Ponto p2);
 };
 
 #endif /* DiagramaVoronoi_h */

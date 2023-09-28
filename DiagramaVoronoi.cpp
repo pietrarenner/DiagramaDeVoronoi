@@ -191,11 +191,25 @@ bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
 
         ProdVetorial(V1,V2,prodVetorialVP); //como chamar a função ProdVetorial???
 
-        if(prodVetorialVP.z > 0) contadorArestas++; //considera todos os pontos que estiverem de um mesmo lado
-        else if(prodVetorialVP.z < 0) return false;
+        if(prodVetorialVP.z < 0) contadorArestas++; //considera todos os pontos que estiverem de um mesmo lado
+        else if(prodVetorialVP.z > 0) return false;
     }
 
     if(contadorArestas==n) return true;
     return false;
 }
 
+void Voronoi::criaEnvelopes()
+{
+    envelopes = new Envelope[qtdDePoligonos];
+}
+
+void Voronoi::setEnvelopes(int i, Ponto p1, Ponto p2)
+{
+    envelopes[i].GeraEnvelope(p1, p2);
+}
+
+Envelope Voronoi::getEnvelope(int i)
+{
+    return envelopes[i];
+}

@@ -371,3 +371,101 @@
 1695330772 source:c:\users\pietr\onedrive\햞ea de trabalho\diagramadevoronoi\envelope.cpp
 	"Envelope.h"
 
+1695870770 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\diagramavoronoi.cpp
+	"DiagramaVoronoi.h"
+
+1695870074 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\diagramavoronoi.h
+	<iostream>
+	<fstream>
+	"Poligono.h"
+	"Envelope.h"
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\poligono.h
+	<iostream>
+	<windows.h>
+	<glut.h>
+	<GLUT/glut.h>
+	<glut.h>
+	"Ponto.h"
+	<vector>
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\gl\glut.h
+	"freeglut.h"
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\gl\freeglut_std.h
+	<windows.h>
+	<GL/gl.h>
+	<GL/glu.h>
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\gl\freeglut_ext.h
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\ponto.h
+	<iostream>
+	<cmath>
+
+1695856158 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\envelope.cpp
+	"Envelope.h"
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\envelope.h
+	<iostream>
+	<windows.h>
+	<glut.h>
+	<GLUT/glut.h>
+	<glut.h>
+	"Ponto.h"
+
+1695870862 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\exibevariospoligonos.cpp
+	<iostream>
+	<cmath>
+	<ctime>
+	<fstream>
+	<stdlib.h>
+	<sstream>
+	<string>
+	<iostream>
+	<windows.h>
+	<glut.h>
+	<sys/time.h>
+	<GLUT/glut.h>
+	<glut.h>
+	"Ponto.h"
+	"Poligono.h"
+	"DiagramaVoronoi.h"
+	"Envelope.h"
+	"ListaDeCoresRGB.h"
+	"Temporizador.h"
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\listadecoresrgb.h
+	<iostream>
+	<cmath>
+	<ctime>
+	<fstream>
+	<windows.h>
+	<glut.h>
+	<sys/time.h>
+	<GLUT/glut.h>
+	<glut.h>
+
+1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\temporizador.h
+	<iostream>
+	<windows.h>
+	<sys/time.h>
+
+1695856158 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\listadecoresrgb.cpp
+	"ListaDeCoresRGB.h"
+
+1695856158 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\poligono.cpp
+	<iostream>
+	<fstream>
+	"Poligono.h"
+
+1695856158 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\ponto.cpp
+	"Ponto.h"
+
+1695856158 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\temporizador.cpp
+	"Temporizador.h"
+

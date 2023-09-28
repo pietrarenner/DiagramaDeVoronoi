@@ -162,16 +162,16 @@ void init()
 
     envelopes = new Envelope[Voro.getNPoligonos()];
 
-    Diagrama = Voro.getDiagrama();
+    //Diagrama = Voro.getDiagrama();
+
+    Voro.criaEnvelopes();
 
     for (int i = 0; i < Voro.getNPoligonos(); i++){
         Poligono p = Voro.getPoligono(i);
-        Diagrama[i].obtemLimites2();
-        envelopes[i].GeraEnvelope(Diagrama[i].getMaximo(), Diagrama[i].getMinimo());
+        p.obtemLimites2();
+        Voro.setEnvelopes(i, p.getMaximo(), p.getMinimo());
 
-        Diagrama[i].imprime();
-
-        if(Voro.poligonosConvexos(Diagrama[i],ponto))
+        if(Voro.getEnvelope(i).pontoEstaDentro(ponto))
         {
             poligonoAtual = i;
             printf("poligono atual: %d\n", i);
@@ -306,10 +306,10 @@ void poligonosConcavos()
 
     for(int i = 0; i < Voro.getNPoligonos(); i++)
     {
-        if(envelopes[i].envelopeCruzaLinhaHorizontal(ponto))
+        if(Voro.getEnvelope(i).envelopeCruzaLinhaHorizontal(ponto))
         {
             //printf("o ponto %d foi enviado para o calculo\n", i);
-            if(Voro.poligonosConcavos(ponto, Esq, Diagrama[i]) == true) //devemos enviar o próprio polígono ou seu envelope?
+            if(Voro.poligonosConcavos(ponto, Esq, Voro.getPoligono(i)) == true) //devemos enviar o próprio polígono ou seu envelope?
             {
                 printf("o ponto esta dentro do poligono %d\n", i);
                 //poligonoAtual = i;
@@ -328,10 +328,10 @@ void poligonosConvexos(){
 
     for(int i = 0; i < Voro.getNPoligonos(); i++)
     {
-        if(envelopes[i].pontoEstaDentro(ponto))
+        if(Voro.getEnvelope(i).pontoEstaDentro(ponto))
         {
             //printf("o ponto %d foi enviado para o calculo\n", i);
-            if(Voro.poligonosConvexos(Diagrama[i], ponto) == true)
+            if(Voro.poligonosConvexos(Voro.getPoligono(i), ponto) == true)
             {
                 printf("o ponto esta dentro do poligono %d\n", i);
             }
@@ -381,7 +381,9 @@ void display( void )
     {
         P = Voro.getPoligono(i);
         P.desenhaPoligono(); //desenhando bordas dos polígonos
-        printString(intToString(i), envelopes[i].getMeio().x, envelopes[i].getMeio().y);
+        //P.imprime();
+        //Voro.getEnvelope(i).imprime();
+        printString(intToString(i), Voro.getEnvelope(i).getMeio().x, Voro.getEnvelope(i).getMeio().y);
     }
 
     if (desenha)
@@ -409,7 +411,7 @@ void display( void )
     DesenhaPonto();
 
     if(mudou) {
-        if(!Voro.poligonosConvexos(Diagrama[poligonoAtual],ponto))
+        if(!Voro.poligonosConvexos(Voro.getPoligono(poligonoAtual),ponto))
         {
             poligonosConcavos();
 
@@ -419,31 +421,11 @@ void display( void )
             //sabe em que polígono está
             //testa somente com vizinhos do polígono
 
-        //for() -> percorre vizinhos do polígono atual
-            //pegar vizinhos do polígono atual
-            //mandar só vizinhos para poligonosConvexos
-            //saber qual aresta foi cruzada
 
-            /*
             //salvar aresta que foi cruzada (deu negativo)
             //pegar polígono que tem aquela aresta também
             //testar com algoritmo dos convexos
-            for(int j = 0; j < Diagrama[poligonoAtual].getNVertices(); j++) { //vizinhos e vértices tem mesmo tamanho
-                numVizinho = Diagrama[poligonoAtual].getVizinho(j);
-                pol = Diagrama[numVizinho];
 
-                if(Voro.poligonosConvexos(pol, ponto))
-                {
-                    //POR QUE SÓ FUNCIONA COM ESSE PRINT????
-                    std::cout << "O valor booleano eh: " << (Voro.poligonosConvexos(pol, ponto) ? "true" : "false") << std::endl;
-                    printf("o ponto esta dentro do poligono %d\n", numVizinho);
-                    poligonoAtual = numVizinho;
-                    break;
-                }
-
-                printf("poligono: %d\nnumvizinho: %d\n", pol, numVizinho);
-            }
-            */
 
 
             printf("VIZINHOS: a funcao ProdVetorial foi chamada %d vezes\n", getContadorInt());
@@ -459,7 +441,7 @@ void display( void )
             resetContadorInt();
         }
 
-        printf("poligono atual: %d\n", poligonoAtual);
+        //printf("poligono atual: %d\n", poligonoAtual);
         mudou = false;
     }
 
