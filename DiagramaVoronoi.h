@@ -33,7 +33,7 @@ public:
     void obtemVizinhosDasArestas();
     Poligono* getDiagrama();
     bool poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol);
-    bool poligonosConvexos(Poligono pol, Ponto p);
+    bool poligonosConvexos(Poligono pol, Ponto p, int &vizinho, bool trocou);
     Envelope getEnvelope(int i);
     void criaEnvelopes();
     void setEnvelopes(int i, Ponto p1, Ponto p2);

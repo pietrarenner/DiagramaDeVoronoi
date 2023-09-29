@@ -59,6 +59,7 @@ public:
     int getVizinho(int i);
     //void mudaCorPoligono(int cor);
     //String getCor();
+    void imprimeVizinhos();
 };
 
 #endif

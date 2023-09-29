@@ -120,14 +120,11 @@ void Voronoi::obtemVizinhosDasArestas()
                     // Comparar vértice[(j + 1) % getNVertices()] do polígono atual com vértice[l] do próximo polígono
                     if ((p == p3) && (p1 == p2)) {
                         Diagrama[i].insereVizinho(j, k);
-                        //printf("Vizinho do poligono %d: %d\n", i, k);
-                        //printf("entrou na aresta %d\n", j);
                         break;
                     }
                 }
             }
         }
-        //printf("\n");
     }
 }
 
@@ -157,13 +154,11 @@ bool Voronoi::poligonosConcavos(Ponto ponto, Ponto Esq, Poligono pol) {
         }
     }
 
-    printf("arestas: %d\n", contadorArestas);
-
     if(contadorArestas%2 == 0) return false; //não tá dentro -> é par
     else return true; //tá dentro -> é ímpar
 }
 
-bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
+bool Voronoi::poligonosConvexos(Poligono pol, Ponto p, int &vizinho, bool trocou){
     int contadorArestas = 0;
     float x1, x2, x3, x4, y1, y2, y3, y4;
     Ponto V1, V2, prodVetorialVP;
@@ -176,23 +171,24 @@ bool Voronoi::poligonosConvexos(Poligono pol, Ponto p){
         y1 = pol.getVertice(i).y; //pega o vértice atual
         x2 = pol.getVertice((i + 1) % n).x; //pega sempre o próximo vértice
         y2 = pol.getVertice((i + 1) % n).y;
-        //Ponto P1 = Ponto(x1,y1);
-        //Ponto P2 = Ponto (x2,y2);
 
         //calculando os vetores
         x3 = x2 - x1;
         y3 = y2 - y1;
-        //V1 = P2-P1;
         V1 = Ponto(x3,y3); //primeiro vetor
 
         x4 = p.x - x1;
         y4 = p.y - y1;
         V2 = Ponto(x4,y4); //segundo vetor
 
-        ProdVetorial(V1,V2,prodVetorialVP); //como chamar a função ProdVetorial???
+        ProdVetorial(V1,V2,prodVetorialVP);
 
         if(prodVetorialVP.z < 0) contadorArestas++; //considera todos os pontos que estiverem de um mesmo lado
-        else if(prodVetorialVP.z > 0) return false;
+        else if(prodVetorialVP.z > 0)
+        {
+            if(trocou) vizinho = i;
+            return false;
+        }
     }
 
     if(contadorArestas==n) return true;

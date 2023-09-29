@@ -181,3 +181,11 @@ void Poligono::insereVizinho(int pos, int poligono) {
 int Poligono::getVizinho(int i) {
     return vizinhos[i];
 }
+
+void Poligono::imprimeVizinhos()
+{
+    for(int i = 0; i < Vertices.size(); i++)
+    {
+        printf("vizinho[%d] = %d\n", i, vizinhos[i]);
+    }
+}
