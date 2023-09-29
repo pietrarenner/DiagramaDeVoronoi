@@ -2,7 +2,7 @@
 // PUCRS/Escola Politécnica
 // COMPUTAÇÃO GRÁFICA
 //
-// Programa basico para criar aplicacoes 2D em OpenGL
+// Programa basico para criar aplicacoes 2D em OpenGL]
 //
 // Marcio Sarroglia Pinho
 // pinho@pucrs.br
@@ -66,7 +66,7 @@ bool mudou = false;
 
 float angulo=0.0;
 
-Ponto ponto (0,0);
+Ponto ponto;
 
 Poligono *Diagrama;
 Poligono pol;
@@ -150,20 +150,29 @@ void init()
 
     //DesenhaPonto(ponto);
 
-    Voro.LePoligonos("ListaDePoligonos-V2.txt");
+    Voro.LePoligonos("500Poligonos.txt");
     Voro.obtemLimites(Min,Max);
     Voro.obtemVizinhosDasArestas();
     Min.imprime("Minimo:", "\n");
     Max.imprime("Maximo:", "\n");
 
+    printf("%d", Voro.getNPoligonos());
+
     CoresDosPoligonos = new int[Voro.getNPoligonos()];
 
     for (int i=0; i<Voro.getNPoligonos(); i++) //carga e definiÁ„o das cores dos polÌgonos
-        CoresDosPoligonos[i] = i*2;//rand()%80;
+        CoresDosPoligonos[i] = rand()%80;//i*2;
 
     envelopes = new Envelope[Voro.getNPoligonos()];
 
     Voro.criaEnvelopes();
+
+    Ponto Meio;
+    Meio.x = (Max.x+Min.x)/2;
+    Meio.y = (Max.y+Min.y)/2;
+    Meio.z = (Max.z+Min.z)/2;
+
+    ponto = Meio;
 
     for (int i = 0; i < Voro.getNPoligonos(); i++){
         Poligono p = Voro.getPoligono(i);
@@ -188,7 +197,6 @@ void init()
 
     Min = Min - Largura * 0.1;
     Max = Max + Largura * 0.1;
-
 }
 
 double nFrames=0;
@@ -381,8 +389,6 @@ void display( void )
     {
         P = Voro.getPoligono(i);
         P.desenhaPoligono(); //desenhando bordas dos polÌgonos
-        //P.imprime();
-        //Voro.getEnvelope(i).imprime();
         printString(intToString(i), Voro.getEnvelope(i).getMeio().x, Voro.getEnvelope(i).getMeio().y);
     }
 
@@ -424,7 +430,7 @@ void display( void )
         else
         {
             printf("o poligono ainda eh o %d\n", poligonoAtual);
-            printf("a funcao ProdVetorial foi chamada %d vezes\n", getContadorInt());
+            printf("a funcao ProdVetorial foi chamada %d vezes\n\n", getContadorInt());
             resetContadorInt();
         }
         mudou = false;
@@ -472,22 +478,22 @@ void keyboard ( unsigned char key, int x, int y )
             break;
         case 'a':
             pontoAnterior = ponto;
-            ponto.x -= 0.1;
+            ponto.x -= 10;
             mudou = true;
             break;
         case 's':
             pontoAnterior = ponto;
-            ponto.y -= 0.1;
+            ponto.y -= 10;
             mudou = true;
             break;
         case 'w':
             pontoAnterior = ponto;
-            ponto.y += 0.1;
+            ponto.y += 10;
             mudou = true;
             break;
         case 'd':
             pontoAnterior = ponto;
-            ponto.x += 0.1;
+            ponto.x += 10;
             mudou = true;
             break;
 		default:
