@@ -39,9 +39,11 @@ bool Envelope::temColisao(Envelope E)
     return true;
 }
 
-bool Envelope::envelopeCruzaLinhaHorizontal(Ponto p)
+bool Envelope::envelopeCruzaLinhaHorizontal(Ponto p, Envelope e)
 {
-    if((Min.y < p.y) && (Max.y > p.y) && (Max.x <= p.x+2)) return true;
+    if((Min.y <= p.y) && (Max.y >= p.y) && (Max.x <= p.x)) return true;
+    if((p.y <= e.Max.y) && (p.y >= e.Min.y) && (p.x <= e.Max.x) && (p.x >= e.Min.x)) return true;
+    //if(HaInterseccao())
 
     return false;
 }

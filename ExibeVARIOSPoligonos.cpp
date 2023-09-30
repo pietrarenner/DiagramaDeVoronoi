@@ -150,13 +150,11 @@ void init()
 
     //DesenhaPonto(ponto);
 
-    Voro.LePoligonos("500Poligonos.txt");
+    Voro.LePoligonos("20Poligonos.txt");
     Voro.obtemLimites(Min,Max);
     Voro.obtemVizinhosDasArestas();
     Min.imprime("Minimo:", "\n");
     Max.imprime("Maximo:", "\n");
-
-    printf("%d", Voro.getNPoligonos());
 
     CoresDosPoligonos = new int[Voro.getNPoligonos()];
 
@@ -188,7 +186,6 @@ void init()
     }
 
     resetContadorInt();
-    printf("CONTADOR: %d", getContadorInt());
 
     // Ajusta a largura da janela l—gica
     // em fun‹o do tamanho dos pol’gonos
@@ -220,9 +217,9 @@ void animate()
     }
     if (TempoTotal > 50.0)
     {
-        cout << "Tempo Acumulado: "  << TempoTotal << " segundos. " ;
-        cout << "Nros de Frames sem desenho: " << nFrames << endl;
-        cout << "FPS(sem desenho): " << nFrames/TempoTotal << endl;
+        //cout << "Tempo Acumulado: "  << TempoTotal << " segundos. " ;
+        //cout << "Nros de Frames sem desenho: " << nFrames << endl;
+        //cout << "FPS(sem desenho): " << nFrames/TempoTotal << endl;
         TempoTotal = 0;
         nFrames = 0;
     }
@@ -304,13 +301,19 @@ void poligonosConcavos()
 {
     resetContadorInt();
 
+    //printf("ponto atual:\n");
+    //ponto.imprime();
     for(int i = 0; i < Voro.getNPoligonos(); i++)
     {
-        if(Voro.getEnvelope(i).envelopeCruzaLinhaHorizontal(ponto))
+        //printf("envelope poligono %d:\n", i);
+        //Voro.getEnvelope(i).imprime();
+        //printf("\n");
+        if(Voro.getEnvelope(i).envelopeCruzaLinhaHorizontal(ponto, Voro.getEnvelope(i)))
         {
+            printf("poligono enviado: %d\n",i);
             if(Voro.poligonosConcavos(ponto, Esq, Voro.getPoligono(i)) == true) //devemos enviar o próprio polígono ou seu envelope?
             {
-                printf("\nCONCAVOS: o ponto esta dentro do poligono %d\n", i);
+                printf("CONCAVOS: o ponto esta dentro do poligono %d\n", i);
             }
         }
     }
@@ -326,8 +329,7 @@ void poligonosConvexos(){
     {
         if(Voro.getEnvelope(i).pontoEstaDentro(ponto))
         {
-            printf("envelope enviado: %d\n",i);
-            Voro.getPoligono(i).imprimeVizinhos();
+            printf("poligono enviado: %d\n",i);
             if(Voro.poligonosConvexos(Voro.getPoligono(i), ponto, vizinho, false))
             {
                 printf("CONVEXOS: o ponto esta dentro do poligono %d\n", i);
@@ -345,6 +347,7 @@ void vizinhos()
 {
     poligonoAtual = Voro.getPoligono(poligonoAtual).getVizinho(vizinho);
 
+    printf("VIZINHOS: o poligono atual eh o %d\n", poligonoAtual);
     printf("VIZINHOS: a funcao ProdVetorial foi chamada %d vezes\n", getContadorInt());
     resetContadorInt();
 
@@ -402,7 +405,7 @@ void display( void )
         //Ponto Dir (-1,0); //Ponto Dir = new Ponto(-1, 0)
         Esq = PontoClicado + Dir * (1000);
         glColor3f(0,1,0); // R, G, B  [0..1]
-        DesenhaLinha(PontoClicado, Esq); //cria e desenha linha horizontal a partir do ponto clicado até o ponto mais à esquerda
+        //DesenhaLinha(PontoClicado, Esq); //cria e desenha linha horizontal a partir do ponto clicado até o ponto mais à esquerda
         //não faz cálculo de se atravessou linha ou não
 
         glColor3f(1,0,0); // R, G, B  [0..1]

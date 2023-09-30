@@ -407,10 +407,10 @@
 	<iostream>
 	<cmath>
 
-1695956236 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\envelope.cpp
+1696087457 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\envelope.cpp
 	"Envelope.h"
 
-1695856158 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\envelope.h
+1696087343 c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\envelope.h
 	<iostream>
 	<windows.h>
 	<glut.h>
@@ -418,7 +418,7 @@
 	<glut.h>
 	"Ponto.h"
 
-1695994224 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\exibevariospoligonos.cpp
+1696092778 source:c:\users\pietr\onedrive\햞ea de trabalho\trabalho certo\diagramadevoronoi\exibevariospoligonos.cpp
 	<iostream>
 	<cmath>
 	<ctime>

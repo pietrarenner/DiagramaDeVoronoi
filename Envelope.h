@@ -42,7 +42,7 @@ public:
     bool pontoEstaDentro(Ponto P);
     void imprime();
     void Desenha();
-    bool envelopeCruzaLinhaHorizontal(Ponto p);
+    bool envelopeCruzaLinhaHorizontal(Ponto p, Envelope e);
 };
 
 #endif /* Envelope_hpp */
